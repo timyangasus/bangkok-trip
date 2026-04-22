@@ -192,26 +192,19 @@
   })();
 </script><script>
 function switchTab(tab) {
-  ['overview','map','gear','budget'].forEach(t => {
+  ['overview','map','gear','budget'].forEach(function(t) {
     var tabEl = document.getElementById('tab-'+t);
     if (tabEl) tabEl.classList.toggle('active', t===tab);
     var page = document.getElementById('page-'+t);
     if (!page) return;
-    if (t === 'budget') {
-      page.style.display = (t === tab) ? 'flex' : 'none';
-      page.classList.toggle('active', t===tab);
-    } else {
-      page.style.display = '';
-      page.classList.toggle('active', t===tab);
-    }
+    page.classList.toggle('active', t===tab);
   });
 }
 function switchDay(idx) {
-  document.querySelectorAll('.date-strip-tab').forEach((t,i) => t.classList.toggle('active', i===idx));
-  document.querySelectorAll('.day-panel').forEach((p,i) => {
+  document.querySelectorAll('.date-strip-tab').forEach(function(t,i){ t.classList.toggle('active', i===idx); });
+  document.querySelectorAll('.day-panel').forEach(function(p,i){
     p.style.display = i===idx ? 'block' : 'none';
   });
-  // scroll overview to top
   document.getElementById('page-overview').scrollTop = 0;
 }
 </script><script>
@@ -668,7 +661,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (appShell) {
           appShell.style.height = '';
           appShell.style.minHeight = '';
-          appShell.style.overflow = 'hidden';
+          appShell.style.overflow = '';
         }
         var pageBudget = document.getElementById('page-budget');
         if (pageBudget) {
